@@ -5,6 +5,7 @@ from ..models import News_Sources
 @main.route('/')
 def index():
     '''
-    news_sources_results_list
+    a function that displays the main route page
     '''
-    pass
+    sources=get_news_sources()
+    return render_template(sources=sources)
