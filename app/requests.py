@@ -2,6 +2,7 @@ import urllib.request,json
 from .models import News_Sources,News_Article
 api_key=None
 base_url=None
+news_article_url=None
 def configure_request(app):
     '''
     a function that takes in the application instance and replaces the value of variables set to none
@@ -15,17 +16,16 @@ def get_news_sources(category):
     '''
     a function that gets the json response to our url request
     '''
-    get_news_sources_url=base_url.format(category,api_key)
+    get_news_sources_url = base_url.format(category,api_key)
     with urllib.request.urlopen(get_news_sources_url) as url:
         get_news_sources_data=url.read()
         get_news_sources_response=json.loads(get_news_sources_data)
         news_sources_results=None
-        if get_news_sources_responose['results']:
-            news_sources_results_list=get_news_sources_response['results']
+        if get_news_sources_responose['general']:
+            news_sources_results_list=get_news_sources_response['general']
             news_sources_results=process_sources_results(news_sources_results_list)
-            return news_sources_results
+    return news_sources_results
 def process_sources_results(news_sources_list):
-
     '''
     '''
     news_sources_results=[]
