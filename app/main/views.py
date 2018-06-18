@@ -7,5 +7,7 @@ def index():
     '''
     a function that displays the main route page
     '''
-    sources='hhhhhahahahha'
-    return render_template('index.html',sources=sources)
+
+    news_sources=get_news_sources('sources')
+    print(sources)
+    return render_template('index.html',sources=news_sources)
