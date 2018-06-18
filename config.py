@@ -3,9 +3,11 @@ class Config:
     '''
     This is ageneral configuration class
     '''
-    news_sources_api_base_url='https://newsapi.org/v2/sources?category={}&apiKey={}'
-    news_article_url='https://newsapi.org/v2/everything?q={}&apiKey={}'
-    news_api_key=os.environ.get('news_api_key')
+    BASE_URL='https://newsapi.org/v2/sources?category={}&apiKey={}'
+    NEWS_ARTICLE_URL = 'https://newsapi.org/v2/everything?q={}&apiKey={}'
+    # api_key = os.environ.get('api_key')
+    API_KEY='c70858058d0a45bebdac60c4e051d360'
+
 
 class ProdConfig(Config):
     pass
