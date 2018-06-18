@@ -8,7 +8,7 @@ class Config:
     news_api_key=os.environ.get('news_api_key')
     secret_key=os.environ.get('secret_key')
 
-class ProdConfig(Config)
+class ProdConfig(Config):
     pass
 class DevConfig(Config):
     DEBUG= True
