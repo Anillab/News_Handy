@@ -1,3 +1,4 @@
+{%import 'macros.html' as macro%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -7,15 +8,11 @@
   <body>
   <h2>News</h2>
   <ul>
-    {% for news_source in general%}
-        <li>{{news_source.id}}</li>
-    {% endfor%}
+      {{macro.displayNewsSources(general)}}
   </ul>
   <h1>sports</h1>
   <ul>
-    {%for sport in sports%}
-    <li>{{sport.name}}</li>
-    {%endfor%}
+    {{macro.displayNewsSources(sports)}}
   </ul>
   </body>
 </html>

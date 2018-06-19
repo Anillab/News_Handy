@@ -1,0 +1,5 @@
+{%macro displayNewsSources(news_sources_list)%}
+    {%for source in news_sources_list%}
+        <li>{{source.name}}</li>
+    {%endfor%}
+{%endmacro%}
