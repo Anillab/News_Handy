@@ -1,11 +1,6 @@
 {%import 'macros.html' as macro%}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+{%extends 'base.html'%}
+{%block content%}
   <h2>News</h2>
   <ul>
       {{macro.displayNewsSources(general)}}
@@ -14,5 +9,4 @@
   <ul>
     {{macro.displayNewsSources(sports)}}
   </ul>
-  </body>
-</html>
+{%endblock%}
