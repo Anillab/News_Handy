@@ -26,6 +26,7 @@ def get_news_sources(category):
             news_sources_results_list=get_news_sources_response['sources']
             news_sources_results=process_sources_results(news_sources_results_list)
     return news_sources_results
+
 def process_sources_results(news_sources_list):
     '''
     '''
@@ -36,25 +37,34 @@ def process_sources_results(news_sources_list):
         description=source.get('description')
         category=source.get('category')
         url=source.get('get_news_sources_url')
+
         news_object=News_Sources(id,name,description,category,url)
         news_sources_results.append(news_object)
     return news_sources_results
-def get_news_articles(id):
+
+def get_news_articles(source_id):
     '''
     a function that returns a json response of news articles
     '''
-    get_news_articles_url=news_article_url.format(id,api_key)
+    get_news_articles_url=news_article_url.format(source_id,api_key)
     with urllib.request.urlopen(get_news_articles_url) as url:
         data=url.read()
         data_response=json.loads(data)
-        news_articles_results=None
-        if data_response:
-            id=data_response.get('id')
-            title=data_response.get('title')
-            author=data_response.get('author')
-            url=data_response.get('url')
-            urlToImage=data_response.get('urlToImage')
-            description=data_response.get('description')
-            publishedAt=data_response.get('publishedAt')
+        # data_list=None
 
-    return news_articles_results        
+        article_list=[]
+
+        if data_response['articles']:
+            data_list=data_response['articles']
+            for article_data in data_list:
+                # id=article_data.get('id')
+                title=article_data.get('title')
+                author=article_data.get('author')
+                url=article_data.get('url')
+                urlToImage=article_data.get('urlToImage')
+                description=article_data.get('description')
+                publishedAt=article_data.get('publishedAt')
+
+                article_list.append(News_Article(title,author,url,urlToImage,description,publishedAt))
+
+    return article_list
