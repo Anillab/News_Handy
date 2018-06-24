@@ -36,35 +36,38 @@ def process_sources_results(news_sources_list):
         name=source.get('name')
         description=source.get('description')
         category=source.get('category')
-        url=source.get('get_news_sources_url')
+        url=source.get('url')
 
         news_object=News_Sources(id,name,description,category,url)
         news_sources_results.append(news_object)
     return news_sources_results
 
-def get_news_articles(source_id):
+def get_news_articles(q):
     '''
     a function that returns a json response of news articles
     '''
-    get_news_articles_url=news_article_url.format(source_id,api_key)
+    get_news_articles_url=news_article_url.format(q,api_key)
     with urllib.request.urlopen(get_news_articles_url) as url:
         data=url.read()
         data_response=json.loads(data)
-        # data_list=None
-
-        article_list=[]
-
+        data_results=None
         if data_response['articles']:
-            data_list=data_response['articles']
-            for article_data in data_list:
-                # id=article_data.get('id')
-                title=article_data.get('title')
-                author=article_data.get('author')
-                url=article_data.get('url')
-                urlToImage=article_data.get('urlToImage')
-                description=article_data.get('description')
-                publishedAt=article_data.get('publishedAt')
+            data_results = process_articles(data_response['articles'])
+    return data_results
 
-                article_list.append(News_Article(title,author,url,urlToImage,description,publishedAt))
+def process_articles(article_list):
+    data_list=[]
 
-    return article_list
+    for article_data in article_list:
+        id=article_data.get('id')
+        title=article_data.get('title')
+        author=article_data.get('author')
+        url=article_data.get('url')
+        urlToImage=article_data.get('urlToImage')
+        description=article_data.get('description')
+        publishedAt=article_data.get('publishedAt')
+
+        if urlToImage:
+            data_list.append(News_Article(title,author,url,urlToImage,description,publishedAt))
+
+    return data_list

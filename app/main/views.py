@@ -17,5 +17,5 @@ def articles(id):
     '''
     '''
     source_articles=get_news_articles('id')
-    # print(source_articles.title)
+    
     return render_template('articles.html',articles=source_articles)
