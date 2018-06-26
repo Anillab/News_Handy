@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 News Handy
 ===================
 
@@ -86,3 +87,7 @@ Open the app on your browser, by default on `127.0.0.1:5000`.
 ## License ([MIT License](http://choosealicense.com/licenses/mit/))
 
 This project is licensed under the MIT Open Source license, (c) [Anilla Busolo ](https://github.com/Anillab)
+=======
+# News_Handy
+a web application that enables one to catch up with news from all over the world
+>>>>>>> cf7d3a595e0309e891a17096a563c56ee97a66ff
