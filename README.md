@@ -65,10 +65,8 @@ python ./start.sh
 ```
 Open the app on your browser, by default on `127.0.0.1:5000`.
 
-## Live Demo
+<!-- ## Live Demo -->
 
-The web app can be accessed from the following link
-`https://news-highlights-info.herokuapp.com/`
 
 
 
